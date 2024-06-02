@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #searchResult {
+            margin-top: 20px;
+            color: green;
+        }
+        #searchInput{
+            outline: none;
+            height: 30px;
+        }
+        .paragraph {
+            margin-bottom: 30px;
+            line-height: 30px;
+        }
+        #paragraphContainer{
+            margin-top: 20px;
+        }
+        span{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search for a Paragraph</h1>
+    <input type="text" id="searchInput" placeholder="Enter keyword">
+    <button onclick="searchParagraph()">Search</button>
+
+    <div id="paragraphContainer">
+        <div class="paragraph" id="para1">Q1)Differentiate between (i) Crystalline & Amorphous solids (ii) Isomorphism & Polymorphism <br><span>Page No ten year(255)</span></div>
+        <div class="paragraph" id="para2">Q2)State Raoult's law and derive mathematical relation. <br><span>Page No ten year(262)</span></div>
+        <div class="paragraph" id="para2">Q3)Define hybridization. Explain sp³, sp² & sp hybridization with one example of each. <br><span>Page No ten year(267)</span></div>
+        <div class="paragraph" id="para2">Q4)State and explain Hess's law. Write its applications <br><span>Page No ten year(358)</span></div>
+        <div class="paragraph" id="para2">Q5)State first law of thermodynamics. Derive pressure volume work equation. <br><span>Page No ten year(287)(347)</span></div>
+        <div class="paragraph" id="para2">Q6)State and explain Pauli's exclusion principle, Aufbau principle, Hund's rule, (n+l) rule <br><span>Page No ten year(325)(371)</span></div>
+        <div class="paragraph" id="para2">Q7)Explain Le Chatelier's principle using Haber's process OR Ostwald process. <br><span>Page No ten year(282)</span></div>
+        <div class="paragraph" id="para2">Q8)Define buffer solution. Write its applications <br><span>Page No ten year(284)</span></div>
+        <div class="paragraph" id="para2">Q9)State Avogadro's law, derive ideal gas equation. <br><span>Page No ten year(290)</span></div>
+        <div class="paragraph" id="para2">Q10)State postulates of VSEPR, Predict the shape of CH4, NH3, H2O & CO2 <br><span>Page No ten year(291)(345)</span></div>
+        <div class="paragraph" id="para2">Q10)Properties of ray alpha beta gama <br><span>Page No ten year(298)</span></div>
+        <div class="paragraph" id="para2">Q10)Define solubility product <br><span>Page No ten year(301)</span></div>
+        <div class="paragraph" id="para2">Q10)Define Molarity and Molality <br><span>Page No ten year(303)</span></div>
+        <div class="paragraph" id="para2">Q10)Postulates of kinetic molecular theory <br><span>Page No ten year(307)</span></div>
+        <div class="paragraph" id="para2">Q10)Postulates of Bohor theory<br><span>Page No ten year(264)</span></div>
+        <div class="paragraph" id="para2">Q10)Define Bond Energy and Bond length<br><span>Page No ten year(314)</span></div>
+        <div class="paragraph" id="para2">Q10)State law of mass action and derive a relation for equilibrium constant.<br><span>Page No ten year(316)</span></div>
+        <div class="paragraph" id="para2">Q10)Describe leewis theory acids and bases<br><span>Page No ten year(317)</span></div>
+        <div class="paragraph" id="para2">Q10)Differentiate between Homogeneous catalyst and heterogeneous catalyst  2)Elementry reaction and overall reaction<br><span>Page No ten year(318)</span></div>
+        <div class="paragraph" id="para2">Q10)State Dalton law of partial pressure<br><span>Page No ten year(318)</span></div>
+        <div class="paragraph" id="para2">Q10)Differentiate between continuous and line spectrum<br><span>Page No ten year(333)</span></div>
+        <div class="paragraph" id="para2">Q10)Differentiate between VBT and MOT valence bond theory and molecule orbital thoeory<br><span>Page No ten year(333)</span></div>
+        <div class="paragraph" id="para2">Q10). Explain Bronsted theory of acid and base with examples. Write its limitation.<br><span>Page No ten year(336)</span></div>
+        <div class="paragraph" id="para2">Q10)Differentiate between balmer lyman series<br><span>Page No ten year(336)</span></div>
+        <div class="paragraph" id="para2">Q10)Write properties of X-rays<br><span>Page No ten year(344)</span></div>
+        <div class="paragraph" id="para2">Q10)Avagadro  and mole Define<br><span>Page No ten year(351)</span></div>
+        <div class="paragraph" id="para2">Q10)What is meant by diffusion and effusion? Explain Graham's law of diffusion<br><span>Page No ten year(361)</span></div>
+        <div class="paragraph" id="para2">Q10)Define Stoichiometry 2)exponential notation 3)Molar volume Define<br><span>Page No ten year(361)</span></div>
+        <div class="paragraph" id="para2">Q10)Rate of reaction 2) Velocity of reaction 3)order of raction 4) rate constent<br><span>Page No ten year(375)</span></div>
+        <div class="paragraph" id="para2">Q10)Deefine radioactivity<br><span>Page No ten year(377)</span></div>
+        <div class="paragraph" id="para2">Q10)Differentiate between bonding molecular orbital and anti bonding molecular orbital<br><span>Page No ten year(377)</span></div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div id="searchResult"></div>
+
+    <script>
+        function searchParagraph() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const paragraphs = document.querySelectorAll('.paragraph');
+            let found = false;
+
+            paragraphs.forEach(paragraph => {
+                if (paragraph.textContent.toLowerCase().includes(input)) {
+                    paragraph.style.backgroundColor = 'yellow';
+                    found = true;
+                } else {
+                    paragraph.style.backgroundColor = 'white';
+                }
+            });
+
+            const result = document.getElementById('searchResult');
+            if (found) {
+                result.textContent = 'Paragraph(s) highlighted in yellow.';
+            } else {
+                result.textContent = 'No paragraph found with that keyword.';
+            }
+        }
+    </script>
+</body>
+</html>
